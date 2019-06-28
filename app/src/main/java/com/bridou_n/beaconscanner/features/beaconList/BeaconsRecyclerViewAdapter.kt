@@ -119,8 +119,16 @@ class BeaconsRecyclerViewAdapter(val ctx: Context,
             val ibeaconData = beacon.ibeaconData
             if (ibeaconData != null) {
                 itemView.proximity_uuid.text = String.format(ctx.getString(R.string.uuid_x), ibeaconData.uuid)
-                itemView.major.text = String.format(ctx.getString(R.string.major_x), ibeaconData.major)
-                itemView.minor.text = String.format(ctx.getString(R.string.minor_x), ibeaconData.minor)
+
+                var all_together = ((ibeaconData.major!!.toInt() shl 16) + ibeaconData.minor!!.toInt()).toInt()
+                var sensor_1 = (all_together shr 20) and 1023
+                var sensor_2 = (all_together shr 10) and 1023
+                var sensor_3 = (all_together shr 0) and 1023
+
+                    itemView.major.text = String.format(( (sensor_1 * (3.3/3.6) - 50) * (360.0/1024.0)).toString(), ibeaconData.major)
+                itemView.minor.text = String.format(( (sensor_2 * (3.3/3.6) - 50) * (360.0/1024.0)).toString(), ibeaconData.minor)
+                itemView.sensor3.text = String.format(( (sensor_3 * (3.3/3.6) - 50) * (360.0/1024.0)).toString(), ibeaconData.minor)
+
             }
         }
     }

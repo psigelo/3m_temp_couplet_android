@@ -101,4 +101,32 @@
             tools:text="Minor • 605"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/s3_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/minor_container"
+        app:layout_constraintLeft_toRightOf="@id/middle_horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        >
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_bookmark_border_black_24dp"
+            android:tint="@color/iconColors"
+            />
+
+        <TextView
+            android:id="@+id/sensor3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/cardPropertyColor"
+            tools:text="tmp_3 • 605"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
